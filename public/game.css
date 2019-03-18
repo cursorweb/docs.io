@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Sniglet');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css');
+html{
+  background:url('https://image.freepik.com/free-photo/white-paper-background_1154-683.jpg');
+}body{background:transparent; color:black; padding :10px;}.hide{display:none;}
+.title{font-family: 'Sniglet', cursive;text-align:center;font-size:400%;}
+.rip{background-image: url(https://dumielauxepices.net/sites/default/files/note-clipart-piece-paper-698147-1097220.png);
+background-position: 80% 0%;padding-top: 10%;background-size: cover;position: absolute;
+width: 60%;
+height: 260px;
+padding-left: 10%;margin-bottom: 10px;margin-left: 15%;font-size: 120%;}
+.widcont{position: absolute;width: 70%;}
+.font{font-family: 'Sniglet', cursive;}
+.input{
+  position:absolute;
+  margin-left:10px;
+  width:calc(100% - 40px); -webkit-appearance: none; border-radius: 0;
+  padding:10px;
+  font-size:30px;
+  font-family: 'Sniglet', cursive;
+  background:rgba(0, 0, 0, 0.1); border:none;
+}
+.input:hover{background:rgba(0, 0, 0, 0.3);}
+.input:focus{outline:0 none;}
+.input::placeholder{color:black;}
+.playerslist li:first-child{color:#da9920;}
+.playerslist li:nth-child(2){color:#adadad;}
+.playerslist li:nth-child(3){color:#ce792f;}
