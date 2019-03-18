@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Docs.io</title>
+    <link href = "game.css" rel = "stylesheet" type = "text/css"/><link href="/logo.png" rel="icon" type="image/x-icon"/>
+  </head>
+  <body>
+    <h1 class = "title">Docs.io</h1>
+    <div class = "shadow-sm p-3 mb-5 bg-white rounded"><p class = "font"><span class = "users"></span> current player<span class = "s"></span> on docs.io!</p>
+    <a class = "btn btn-outline-primary btn-block" href = "t.html">Typing game</a>
+    <a class = "btn btn-outline-primary btn-block" href = "c.html">Drawing game</a></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script><script>var socket=io('/');socket.on('count',function(s){$('.users').html(s);s>1?$('.s').html('s'):$('.s').html('')});</script>
+  </body>
+</html>
