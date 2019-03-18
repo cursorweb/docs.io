@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head><title>Typing game</title><link href = "game.css" rel = "stylesheet" type = "text/css"/><link href="/logo.png" rel="icon" type="image/x-icon"/></head><body><h1 class = "title">Docs.io</h1><div class = "shadow-sm p-3 mb-5 bg-white rounded begin">Please first enter a name.<br><div class="input-group mb-3"><input class="form-control name" placeholder="Your name">
+  <div class="input-group-append">
+    <button class="btn btn-primary startbtn">Start</button>
+  </div>
+</div></div>
+  <div class = "shadow-sm p-3 mb-5 bg-white rounded hide players"><strong>Leaderboard</strong><ol class = "playerslist"></ol><br><br><div class="form-group">
+    <textarea class="form-control type" placeholder = "Type in as much text as you can in here!" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-gramm="false" rows="10" style="resize:none;" ondrop = "return false;"></textarea>
+  </div></div>
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script><script src = "lang.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script>var socket = io("/text"), players = {}, _p;
+  function updateplayers(){$(".playerslist").empty(),_p=Object.keys(players).map(function(e){return{name:players[e].name,score:players[e].score}}),_p.sort(function(e,r){return e.score<r.score?1:e.score>r.score?-1:0}),_p.forEach(function(e){$(".playerslist").append("<li>"+e.name+": "+e.score.toLocaleString()+"</li>")})}socket.on("players",function(e){players=e,updateplayers()});
+  $(".startbtn").click(function(){
+    $(".begin").fadeOut(200, function(){$(".players").fadeIn(200);});
+    var a = curse($(".name").val());
+    if(a){socket.emit("newname", [socket.id, $(".name").val()]);}else{e.preventDefault();alert("Try not to curse.");}
+  });$(document).on('keydown', function(e){var _a = $(".type").val();_a=_a.replace(/[^a-z0-9\n\ ]+/gi,"");$(".type").val(_a);socket.emit('changescore', [socket.id, $(".type").val().length]);if(e.ctrlKey && e.keyCode == 'V'.charCodeAt(0)){e.preventDefault();}if(e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)){e.preventDefault();}document.addEventListener('contextmenu', e => e.preventDefault());});$(document).on('keyup', function(e){var _a = $(".type").val();_a=_a.replace(/[^a-z0-9\n\ ]+/gi,"");$(".type").val(_a);socket.emit('changescore', [socket.id, $(".type").val().length]);if(e.ctrlKey && e.keyCode == 'V'.charCodeAt(0)){e.preventDefault();}if(e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)){e.preventDefault();}document.addEventListener('contextmenu', e => e.preventDefault());});
+ $('.type').bind('copy paste cut',function(e){e.preventDefault();});$(".name").on('keydown', function(e){if(e.keyCode==13){$(".startbtn").trigger('click');}});</script></body>
+</html>
