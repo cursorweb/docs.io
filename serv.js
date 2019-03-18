@@ -4,18 +4,15 @@ module.exports = function (io) {
     var users = 0;function die(a){a.emit("count", users);}
     c.on("connection", function (socket) {
       console.log("Someone connected to chat", socket.id);
-      users++;
+      users++;h.emit("count", users);
       socket.on("disconnect", function(){console.log(socket.id, "has died");users--;h.emit("count", users);});
       c.emit('player', socket.id);
-        data.c[socket.id] = {name: "", score: 0};
-        c.emit('players', data.t);
-        socket.on('newname', function(a){
-          data.c[a[0]].name = a[1];
-          c.emit('players', data.c);
-        });
-        socket.on("disconnect", function(){console.log(socket.id,"has died");users--;h.emit("count", users);
-        delete data.c[socket.id];c.emit('players', data.c);
-        });
+      data.c[socket.id] = {name: "", score: 0};
+      c.emit('players', data.t);
+      socket.on('newname', function(a){
+        data.c[a[0]].name = a[1];
+        c.emit('players', data.c);
+      });
     });
     var h = io.of('/');//Home, duh
     h.on("connection", function(socket){
@@ -25,7 +22,7 @@ module.exports = function (io) {
     }); 
     var t = io.of('/text');//Typing Game
     t.on("connection", function (socket) {
-        users++;
+        users++;h.emit("count", users);
         console.log("Someone connected to text", socket.id);
         t.emit('player', socket.id);
         data.t[socket.id] = {name: "", score: 0};
